@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: white;
+  min-height: 100vh;
+}
+
+ul,
+li {
+  list-style: none;
+  color: black;
+}
+
+li {
+  display: flex;
+  gap: 15px;
+  cursor: pointer;
+}
+
+i {
+  color: black;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.container .search {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.container .search img {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container .search .inputArea {
+  color: white;
+  text-align: center;
+  width: 50%;
+  position: relative;
+  z-index: 2;
+  font-size: 25px;
+ 
+}
+.container .search .inputArea h1{
+  font-family: "Ubuntu", sans-serif;
+font-weight: 500;
+}
+
+.container .search .inputArea h2{
+  font-size: 28px;
+  margin-top: 10px;
+}
+.container .search .inputArea p{
+  font-size: 23px;
+  font-weight: bold;
+}
+.container .search .inputArea .searchBox {
+  height: 48px;
+  margin: 15px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  background: white;
+  border-radius: 5px;
+}
+
+.container .search .inputArea .searchBox #searchText {
+  width: 80%;
+  height: 100%;
+  outline: none;
+  border: none;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.fa-magnifying-glass {
+  width: 55px;
+}
+
+.dropDown {
+  max-width: 13em;
+  position: relative;
+  width: 150px;
+}
+
+.dropDown-btn {
+  color: black;
+  font-size: 18px;
+  width: 100%;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7em 0.5em;
+  cursor: pointer;
+}
+.arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid black;
+  transition: transform ease-in-out 0.3s;
+}
+
+.dropDown-content {
+  position: absolute;
+  top: 3.1rem;
+  width: 100%;
+  visibility: hidden;
+  transform: translateY(-1em);
+  transition: transform ease 0.3s;
+}
+
+input[type="checkbox"]:checked ~ .dropDown-content {
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropDown-content li {
+  background: white;
+  border-radius: 0.5em;
+  padding: 0.7em 0.5em;
+  margin: 0.1em;
+  align-items: center;
+}
+input[type="checkbox"]:checked + label > .arrow {
+  transform: rotate(180deg);
+}
+input[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+#dropdownselectedvalue {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 10px;
+}
+.gallery .items {
+  gap: 15px;
+  min-width: 95%;
+  margin-top: 40px;
+  columns: 5 340px;
+  text-align: center;
+}
+
+.gallery .card {
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 14px;
+  border-radius: 5px;
+}
+.gallery .card img,
+.gallery .card video {
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+button,
+i {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.loadMore {
+  color: #edf1f5;
+  background: #5aa4f9;
+  margin: 50px 0;
+  font-size: 1.2rem;
+  padding: 15px 25px;
+  font-weight: bold;
+}
+
+.notFound i{
+  color: white;
+}
+
+.notFound h1{
+  margin: 15px 0;
+}
+
+.gallery .card:hover .details{
+  bottom: 0;
+}
+
+.gallery .items .details{
+  position: absolute;
+  z-index: 4;
+  width: 100%;
+  bottom: -100px;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  justify-content: space-between;
+  transition: bottom 0.1s ease;
+  background: linear-gradient(to top,rgba(0,0,0,0.7),transparent);
+}
+
+.gallery .items .photographer{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gallery .items .photographer i{
+  color: white;
+}
+.gallery .items .photographer button{
+  background: white;
+  font-size: 1.1rem;
+  padding: 3px 8px;
+
+}
+
+.popUpview{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  visibility: hidden;
+  background: rgba(0,0,0,0.65);
+}
+
+.popUpview.show{
+  visibility: visible;
+}
+
+.popUpview .wrapper{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  padding: 20px;
+  max-width: 850px;
+  background: white;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%,-50%) scale(0.9);
+  transition: transform 0.1s ease;
+}
+
+
+.popUpview.show  .wrapper{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%,-50%) scale(1);
+}
+
+.popUpview .wrapper .details{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popUpview .wrapper .details .photographer{
+  color: black;
+  gap: 10px;
+  display: flex;
+}
+.popUpview .wrapper .details .photographer i{
+    font-size: 1.7rem;
+    cursor: auto;
+}
+.popUpview .wrapper .details .photographer span{
+  font-size: 1.2rem;
+}
+
+.popUpview .wrapper .buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.popUpview .wrapper .buttons i{
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  color: white;
+  font-size: 1.2rem;
+  line-height: 40px;
+  text-align: center;
+  background: #69bbf1;
+  border-radius: 4px;
+  transition:0.2s ease ;
+}
+
+.popUpview .wrapper .previewItem{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.popUpview .wrapper .previewItem .elementItem{
+  max-height: 65vh;
+}
+
+.popUpview .wrapper .previewItem img,
+.popUpview .wrapper .previewItem video{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
